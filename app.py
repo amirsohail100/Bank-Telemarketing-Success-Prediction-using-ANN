@@ -17,20 +17,21 @@ st.markdown("""
 st.markdown("<div class='main-title'>🏦 Bank Marketing Term Deposit Predictor</div>", unsafe_allow_html=True)
 
 # ==========================================
-# 1. LOAD ARTIFACTS (Model & Preprocessor)
+# 1. LOAD ARTIFACTS (Model, Preprocessor & Columns)
 # ==========================================
 @st.cache_resource
 def load_resources():
-    # Aapka preprocessing.pkl aur model.keras/h5 yahan load hoga
+    # Model, primary preprocessor aur training columns list (column.pkl) ko load kar rahe hain
     preprocessor = joblib.load('preprocessing.pkl')
-    model = tf.keras.models.load_model('model.keras') # ya 'model.h5'
-    return preprocessor, model
+    model = tf.keras.models.load_model('model.keras') # Base model structure (or model.h5)
+    model_columns = joblib.load('column.pkl')        # Training ke waqt ka exact column structure
+    return preprocessor, model, model_columns
 
 try:
-    preprocessor, model = load_resources()
-    st.success("✅ Model and Preprocessor loaded successfully!")
+    preprocessor, model, model_columns = load_resources()
+    st.success("✅ Model, Preprocessor, and Feature Columns loaded successfully!")
 except Exception as e:
-    st.error(f"❌ Error loading files: {e}. Make sure 'model.keras' and 'preprocessing.pkl' are in the same folder.")
+    st.error(f"❌ Error loading files: {e}. Make sure 'model.keras', 'preprocessing.pkl', and 'column.pkl' are in the same folder.")
     st.stop()
 
 # ==========================================
@@ -80,41 +81,52 @@ st.write("---")
 # ==========================================
 if st.button("🔮 Predict Term Deposit Conversion", type="primary", use_container_width=True):
     
-    # 1. Input data ka raw DataFrame banao (Sare 19 columns sequential list format mein)
-    input_data = pd.DataFrame([{
-        'age': age, 'campaign': campaign, 'previous': previous, 
-        'emp.var.rate': emp_var_rate, 'cons.price.idx': cons_price_idx, 
-        'cons.conf.idx': cons_conf_idx, 'euribor3m': euribor3m, 
-        'nr.employed': nr_employed, 'was_contacted': was_contacted,
-        'job': job, 'marital': marital, 'education': education, 
-        'default': default, 'housing': housing, 'loan': loan, 
-        'contact': contact, 'month': month, 'day_of_week': day_of_week, 
-        'poutcome': poutcome
-    }])
-    
-    # 2. UI Data ko usi pkl preprocessor se scale aur transform karo (Generates 62 columns)
-    input_processed = preprocessor.transform(input_data)
-    
-    # 3. Model se probability predict karo
-    prediction_prob = model.predict(input_processed)[0][0]
-    
-    # 4. Result Dashboard Output
-    st.markdown("### 🎯 Prediction Result")
-    
-    # Convert to percentage
-    confidence = prediction_prob * 100
-    
-    if prediction_prob >= 0.5:
-        st.markdown(f"""
-            <div class='predict-box' style='background-color: #D1FAE5; color: #065F46; border: 2px solid #34D399;'>
-                🎉 SUCCESS: Customer is highly likely to subscribe! <br>
-                <span style='font-size: 18px;'>Confidence Probability: {confidence:.2f}%</span>
-            </div>
-        """, unsafe_allow_html=True)
-    else:
-        st.markdown(f"""
-            <div class='predict-box' style='background-color: #FEE2E2; color: #991B1B; border: 2px solid #F87171;'>
-                ❌ NO CONVERSION: Customer will likely reject the deposit offer. <br>
-                <span style='font-size: 18px;'>Confidence Probability: {100 - confidence:.2f}%</span>
-            </div>
-        """, unsafe_allow_html=True)
+    try:
+        # 1. Input data ka raw DataFrame banao
+        input_data = pd.DataFrame([{
+            'age': age, 'campaign': campaign, 'previous': previous, 
+            'emp.var.rate': emp_var_rate, 'cons.price.idx': cons_price_idx, 
+            'cons.conf.idx': cons_conf_idx, 'euribor3m': euribor3m, 
+            'nr.employed': nr_employed, 'was_contacted': was_contacted,
+            'job': job, 'marital': marital, 'education': education, 
+            'default': default, 'housing': housing, 'loan': loan, 
+            'contact': contact, 'month': month, 'day_of_week': day_of_week, 
+            'poutcome': poutcome
+        }])
+        
+        # 2. Alignment Check: column.pkl ke mutabik features ka exact sequence set karo
+        # Agar column.pkl ek list/array hai, to ye ensure karega ki data ka structure wahi rahe jo fit ke waqt tha
+        if isinstance(model_columns, (list, np.ndarray, pd.Index)):
+            # Sirf wahi columns select honge jo model_columns me hain aur usi exact order me set honge
+            input_data = input_data.reindex(columns=model_columns)
+        
+        # 3. UI Data ko preprocessor se scale aur transform karo
+        input_processed = preprocessor.transform(input_data)
+        
+        # 4. Model se probability predict karo
+        prediction_prob = model.predict(input_processed)[0][0]
+        
+        # 5. Result Dashboard Output
+        st.markdown("### 🎯 Prediction Result")
+        
+        # Convert to percentage
+        confidence = prediction_prob * 100
+        
+        if prediction_prob >= 0.5:
+            st.markdown(f"""
+                <div class='predict-box' style='background-color: #D1FAE5; color: #065F46; border: 2px solid #34D399;'>
+                    🎉 SUCCESS: Customer is highly likely to subscribe! <br>
+                    <span style='font-size: 18px;'>Confidence Probability: {confidence:.2f}%</span>
+                </div>
+            """, unsafe_allow_html=True)
+        else:
+            st.markdown(f"""
+                <div class='predict-box' style='background-color: #FEE2E2; color: #991B1B; border: 2px solid #F87171;'>
+                    ❌ NO CONVERSION: Customer will likely reject the deposit offer. <br>
+                    <span style='font-size: 18px;'>Confidence Probability: {100 - confidence:.2f}%</span>
+                </div>
+            """, unsafe_allow_html=True)
+            
+    except Exception as prediction_error:
+        st.error(f"❌ Error during transformation or prediction: {prediction_error}")
+        st.info("💡 Tech Check: Make sure the features inside 'column.pkl' match the raw key names expected by the preprocessor.")
