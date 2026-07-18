@@ -42,19 +42,28 @@ To prevent data leakage and ensure 100% feature consistency during live inferenc
 
 Run the following commands in your terminal to clone the repository, install dependencies, and run the project locally:
 
-```bash
 # Clone the repository
+
+```bash
 git clone https://github.com/amirsohail100/Bank-Telemarketing-Success-Prediction-using-ANN.git
+```
 
-# Navigate into the project directory
+## Navigate into the project directory
+
+```bash
 cd Bank-Telemarketing-Success-Prediction-using-ANN
+```
 
-# Install required packages
-pip install -r requirements.txt
+## Install required packages
 
-# Run the Streamlit application
+```bash
+pip install -r requirements.
+```
+
+## Run the Streamlit application
+
+```bash
 streamlit run app.py
-
+```
 
 End-to-end Deep Learning application using an ANN model to predict term deposit subscription (82% accuracy). Features an interactive Streamlit frontend and FastAPI backend with strict Pydantic validation schemas.
-```
