@@ -35,10 +35,10 @@ Run the following commands in your terminal to clone the repository, install dep
 
 ```bash
 # Clone the repository
-git clone YOUR_GITHUB_REPOSITORY_URL_HERE
+git clone https://github.com/amirsohail100/Bank-Telemarketing-Success-Prediction-using-ANN.git
 
 # Navigate into the project directory
-cd YOUR_PROJECT_FOLDER_NAME
+cd Bank-Telemarketing-Success-Prediction-using-ANN
 
 # Install required packages
 pip install -r requirements.txt
