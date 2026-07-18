@@ -6,6 +6,15 @@
 
 A production-ready deep learning pipeline predicting bank telemarketing success via an ANN model trained on the UCI dataset with 82% accuracy[cite: 1, 2]. Features a dynamic Streamlit UI and FastAPI backend optimized with Pydantic validation to enforce strict input data boundaries and prevent inefficient model resource token burn. By processing complex client profiles alongside crucial macroeconomic indicators, the architecture replaces raw scripts with a resource-efficient inference application.
 
+## 🖼️ Application User Interface
+
+> **Live Preview of the Dashboard**  
+> _(Once you upload your screenshot to GitHub, replace 'screenshot.png' with your actual image file name)_
+
+![Streamlit App Interface](screenshot.png)
+
+---
+
 ## 📊 Model Accuracy & Performance
 
 - **Model Framework:** TensorFlow / Keras (Artificial Neural Network - ANN)[cite: 2]
@@ -45,6 +54,7 @@ pip install -r requirements.txt
 
 # Run the Streamlit application
 streamlit run app.py
+
 
 End-to-end Deep Learning application using an ANN model to predict term deposit subscription (82% accuracy). Features an interactive Streamlit frontend and FastAPI backend with strict Pydantic validation schemas.
 ```
