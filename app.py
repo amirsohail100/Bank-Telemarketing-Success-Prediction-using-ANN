@@ -52,8 +52,8 @@ if libs_installed:
         artifacts_loaded = True
         st.success("✅ Deep Learning Model & Preprocessor aligned successfully!")
     except Exception as e:
-        # st.error(f"⚠️ App is running but Model files missing: {e}. Check if 'model.keras', 'preprocessing.pkl' & 'column.pkl' exist.")
-        print("a")
+        st.error(f"⚠️ App is running but Model files missing: {e}. Check if 'model.keras', 'preprocessing.pkl' & 'column.pkl' exist.")
+        # print("a")
 else:
     st.warning(f"⚠️ Running in UI-Only Mode. Missing local system dependencies: {', '.join(missing_libs)}. Please run 'pip install -r requirements.txt'")
 
