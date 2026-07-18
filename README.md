@@ -1,10 +1,10 @@
 # Bank Telemarketing Success Prediction Using ANN
 
-[![Streamlit App](https://static.streamlit.io/badge/sticker/blue.svg)](YOUR_WORKING_LINK_HERE)
+[![Streamlit App](https://static.streamlit.io/badge/sticker/blue.svg)](YOUR_LIVE_STREAMLIT_APP_URL_HERE)
 
 ## 🎯 Project Description
 
-A production-ready deep learning pipeline predicting bank telemarketing success via an ANN model trained on the UCI dataset with 82% accuracy. Features a dynamic Streamlit UI and FastAPI backend optimized with Pydantic validation to enforce strict input data boundaries and prevent inefficient model resource token burn. By processing complex client profiles alongside crucial macroeconomic indicators, the architecture replaces raw scripts with a resource-efficient inference application.
+A production-ready deep learning pipeline predicting bank telemarketing success via an ANN model trained on the UCI dataset with 82% accuracy[cite: 1, 2]. Features a dynamic Streamlit UI and FastAPI backend optimized with Pydantic validation to enforce strict input data boundaries and prevent inefficient model resource token burn. By processing complex client profiles alongside crucial macroeconomic indicators, the architecture replaces raw scripts with a resource-efficient inference application.
 
 ## 📊 Model Accuracy & Performance
 
@@ -29,19 +29,22 @@ To prevent data leakage and ensure 100% feature consistency during live inferenc
 - **Numerical Normalization:** Continuous numeric attributes (e.g., age, consumer confidence index, euribor 3 month rate) are scaled using `StandardScaler`[cite: 1].
 - **Pipeline Synchronization:** Transformations are bundled into an SKLearn `ColumnTransformer`, loaded via `preprocessing.pkl` and strictly aligned with live inputs using `column.pkl`[cite: 2].
 
-## 🌐 Live Demo & Interface
+## 💻 Installation & Setup
 
-- **Deployment URL:** [Launch Live Streamlit Application](YOUR_WORKING_LINK_HERE)
+Run the following commands in your terminal to clone the repository, install dependencies, and run the project locally:
 
-### Application User Interface
+```bash
+# Clone the repository
+git clone YOUR_GITHUB_REPOSITORY_URL_HERE
 
-_(Replace the placeholder image below with your actual UI screenshot path after uploading it to your repository)_
-![Streamlit App Interface](YOUR_IMAGE_PATH_OR_URL_HERE)
+# Navigate into the project directory
+cd YOUR_PROJECT_FOLDER_NAME
 
-## 📚 Citation & Dataset Credits
+# Install required packages
+pip install -r requirements.txt
 
-This predictive framework is built upon the public dataset and research provided by:
-
-> _Moro, S., Cortez, P., and Rita, P. (2014). A Data-Driven Approach to Predict the Success of Bank Telemarketing. Decision Support Systems._[cite: 1]
+# Run the Streamlit application
+streamlit run app.py
 
 End-to-end Deep Learning application using an ANN model to predict term deposit subscription (82% accuracy). Features an interactive Streamlit frontend and FastAPI backend with strict Pydantic validation schemas.
+```
