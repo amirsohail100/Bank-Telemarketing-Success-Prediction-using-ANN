@@ -11,7 +11,7 @@ A production-ready deep learning pipeline predicting bank telemarketing success 
 > **Live Preview of the Dashboard**  
 > _(Once you upload your screenshot to GitHub, replace 'screenshot.png' with your actual image file name)_
 
-![Streamlit App Interface](screenshot.png)
+![Streamlit App Interface](UI.png)
 
 ---
 
