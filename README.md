@@ -48,16 +48,16 @@ To prevent data leakage and ensure 100% feature consistency during live inferenc
 
 ```text
 ├── bank-additional-full.csv   # Primary Product Reviews Dataset
-├── .gitignore             # Git Ignore File
-├── .gitattributes         # Git Attributes File
-├── requirements.txt       # Python Dependencies
-├── model.ipynb            # EDA, Text Normalization & Model Experiments
-├── app.py                 # Interactive Streamlit Web Application
-├── model.h5             # Serialized Trained Machine Learning Classifier (83% Test Acc)
-├── preprocessing.pkl      # preprocessing the dataset
-├── columns.pkl            # Feature Column Schema Definitions
-├── UI.png                 # Application UI Preview
-└── README.md              # Documentation
+├── .gitignore                 # Git Ignore File
+├── .gitattributes             # Git Attributes File
+├── requirements.txt           # Python Dependencies
+├── model.ipynb                # EDA, Text Normalization & Model Experiments
+├── app.py                     # Interactive Streamlit Web Application
+├── model.h5                   # Serialized Trained Deep Learning Classifier (84% Test Acc)
+├── preprocessing.pkl          # preprocessing the dataset
+├── columns.pkl                # Feature Column Schema Definitions
+├── UI.png                     # Application UI Preview
+└── README.md                  # Documentation
 ```
 
 # Clone the repository
