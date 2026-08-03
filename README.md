@@ -77,7 +77,7 @@ cd Bank-Telemarketing-Success-Prediction-using-ANN
 ## Install required packages
 
 ```bash
-pip install -r requirements.
+pip install -r requirements.txt
 ```
 
 ---
