@@ -42,6 +42,24 @@ To prevent data leakage and ensure 100% feature consistency during live inferenc
 
 ## Run the following commands in your terminal to clone the repository, install dependencies, and run the project locally:
 
+---
+
+## 📁 Repository Structure
+
+```text
+├── flipkart_product.csv   # Primary Product Reviews Dataset
+├── .gitignore             # Git Ignore File
+├── .gitattributes         # Git Attributes File
+├── requirements.txt       # Python Dependencies
+├── notebook.ipynb         # EDA, Text Normalization & Model Experiments
+├── app.py                 # Interactive Streamlit Web Application
+├── model.pkl              # Serialized Trained Machine Learning Classifier (83% Test Acc)
+├── tokenizer.pkl          # Fitted TF-IDF / Vectorizer Object
+├── columns.pkl            # Feature Column Schema Definitions
+├── UI.png                 # Application UI Preview
+└── README.md              # Documentation
+```
+
 # Clone the repository
 
 ```bash
