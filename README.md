@@ -86,4 +86,14 @@ streamlit run app.py
 
 ---
 
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 📝 Author
+
+👤 **Amir Sohail**
+
+---
+
 End-to-end Deep Learning application using an ANN model to predict term deposit subscription (82% accuracy). Features an interactive Streamlit frontend and FastAPI backend with strict Pydantic validation schemas.
