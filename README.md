@@ -72,15 +72,11 @@ git clone https://github.com/amirsohail100/Bank-Telemarketing-Success-Prediction
 cd Bank-Telemarketing-Success-Prediction-using-ANN
 ```
 
----
-
 ## Install required packages
 
 ```bash
 pip install -r requirements.txt
 ```
-
----
 
 ## Run the Streamlit application
 
