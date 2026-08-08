@@ -2,6 +2,16 @@
 
 [![Streamlit App](https://static.streamlit.io/badge/sticker/blue.svg)](YOUR_LIVE_STREAMLIT_APP_URL_HERE)
 
+### _Next-Generation Vocal Acoustic Analytics for Emergency Triage Scoring_
+
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://tensorflow.org)
+[![Keras](https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white)](https://keras.io)
+[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![Accuracy](https://img.shields.io/badge/Val_R²_Accuracy-96.90%25-brightgreen?style=for-the-badge)](#-model-training--accuracy-graphs)
+[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+
+---
+
 ## 🎯 Project Description
 
 A production-ready deep learning pipeline predicting bank telemarketing success via an ANN model trained on the UCI dataset with 82% accuracy[cite: 1, 2]. Features a dynamic Streamlit UI and FastAPI backend optimized with Pydantic validation to enforce strict input data boundaries and prevent inefficient model resource token burn. By processing complex client profiles alongside crucial macroeconomic indicators, the architecture replaces raw scripts with a resource-efficient inference application.
