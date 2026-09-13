@@ -21,7 +21,7 @@ A production-ready deep learning pipeline predicting bank telemarketing success 
 > **Live Preview of the Dashboard**  
 > _(Once you upload your screenshot to GitHub, replace 'screenshot.png' with your actual image file name)_
 
-![Bank Telemarketing Success Prediction Using ANN APP UI](UI.png)
+![Bank Telemarketing Success Prediction Using ANN APP UI](assets/UI.png)
 
 ---
 
